@@ -1,5 +1,5 @@
 # i3pystatus-anybar
-[AnyBar](https://github.com/tonsky/anybar) like the widget for i3pystatus
+[AnyBar](https://github.com/tonsky/anybar)-like widget for i3pystatus
 <img src="assets/screenshot.png?raw=true" />
 
 # Install
