@@ -8,10 +8,9 @@
 # Usage
 In your config:
 ```python
-from i3pystatus_anybar import anybar_append
+from i3pystatus_anybar import AnyBar
 
 #...
-
-anybar_append(status, port=1740)
-anybar_append(status, port=1741)
+status.register(AnyBar(port=1470))
+status.register(AnyBar(port=1472))
 ```

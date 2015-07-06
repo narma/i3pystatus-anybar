@@ -19,10 +19,5 @@ setup(name="i3pystatus_anybar",
           "i3pystatus_anybar",
       ],
       install_requires=["i3pystatus"],
-      # entry_points={
-      #     "console_scripts": [
-      #         "i3pystatus = i3pystatus:main"
-      #     ]
-      # },
       zip_safe=True,
       )

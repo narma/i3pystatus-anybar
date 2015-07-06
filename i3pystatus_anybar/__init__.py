@@ -35,15 +35,12 @@ class AnyBar(IntervalModule):
         ("color", "standard color"),
     )
 
-    #required = ("command",)
-
     def on_data(self, data, addr):
         i = data.decode().strip()
         self.color = self.colors.get(i, '#ff0000')
 
     def init(self):
         loop = getattr(self.__class__, "loop", asyncio.get_event_loop())
-
         port = int(getattr(self, 'port', 1738))
 
         proto = type('AnyBarProto%d' % port, tuple(), {
@@ -53,7 +50,7 @@ class AnyBar(IntervalModule):
         listen = loop.create_datagram_endpoint(
             proto, local_addr=('127.0.0.1', port))
         loop.create_task(listen)
-        #transport, protocol = loop.run_until_complete(listen)
+        
         if not hasattr(self.__class__, "loop_thread"):
             self.__class__.loop_thread = threading.Thread(
                 target=loop.run_forever)
@@ -64,14 +61,6 @@ class AnyBar(IntervalModule):
             "full_text": "●",
             "color": self.color
         }
-
-
-def anybar_append(status, **kw):
-    "keys for kw is port and color"
-    anybar = AnyBar(**kw)
-    anybar.registered(status.modules.status_handler)
-    collections.UserList.append(status.modules, anybar)
-    return anybar
 
 
 def anybar_remove(status, anybar):
